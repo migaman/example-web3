@@ -1,238 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
 
-    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+
+	<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 </head>
+
 <body>
-    <div class="container">
-        <h1>Example</h1>
-		Blocknumber:  <div id="blocknumber"></div>
-		Temperature:  <div id="temperature"></div>
-		
+	<div class="container">
+		<h1>Example</h1>
+		Blocknumber:
+		<div id="blocknumber"></div>
+		Temperature:
+		<div id="temperature"></div>
+
 		<button onclick="decreaseTemp()">--</button>
 		<button onclick="increaseTemp()">++</button>
-    </div>
-	
-    <script>
-		
-        web3 = new Web3(web3.currentProvider);
-		firstAccount = web3.eth.accounts[0];
-		console.log("First account address: " + web3.eth.defaultAccount);
-		
-		var FeverABI = web3.eth.contract(
-				[
-			{
-			  "inputs": [],
-			  "payable": false,
-			  "stateMutability": "nonpayable",
-			  "type": "constructor"
-			},
-			{
-			  "constant": true,
-			  "inputs": [],
-			  "name": "getTemperature",
-			  "outputs": [
-				{
-				  "name": "",
-				  "type": "uint8"
-				}
-			  ],
-			  "payable": false,
-			  "stateMutability": "view",
-			  "type": "function"
-			},
-			{
-			  "constant": true,
-			  "inputs": [],
-			  "name": "getBlockCoinbase",
-			  "outputs": [
-				{
-				  "name": "",
-				  "type": "address"
-				}
-			  ],
-			  "payable": false,
-			  "stateMutability": "view",
-			  "type": "function"
-			},
-			{
-			  "constant": true,
-			  "inputs": [],
-			  "name": "getBlockDifficulty",
-			  "outputs": [
-				{
-				  "name": "",
-				  "type": "uint256"
-				}
-			  ],
-			  "payable": false,
-			  "stateMutability": "view",
-			  "type": "function"
-			},
-			{
-			  "constant": true,
-			  "inputs": [],
-			  "name": "getBlockGasLimit",
-			  "outputs": [
-				{
-				  "name": "",
-				  "type": "uint256"
-				}
-			  ],
-			  "payable": false,
-			  "stateMutability": "view",
-			  "type": "function"
-			},
-			{
-			  "constant": true,
-			  "inputs": [],
-			  "name": "getBlockNumber",
-			  "outputs": [
-				{
-				  "name": "",
-				  "type": "uint256"
-				}
-			  ],
-			  "payable": false,
-			  "stateMutability": "view",
-			  "type": "function"
-			},
-			{
-			  "constant": true,
-			  "inputs": [],
-			  "name": "getBlockTimestamp",
-			  "outputs": [
-				{
-				  "name": "",
-				  "type": "uint256"
-				}
-			  ],
-			  "payable": false,
-			  "stateMutability": "view",
-			  "type": "function"
-			},
-			{
-			  "constant": true,
-			  "inputs": [],
-			  "name": "hasFever",
-			  "outputs": [
-				{
-				  "name": "",
-				  "type": "bool"
-				}
-			  ],
-			  "payable": false,
-			  "stateMutability": "view",
-			  "type": "function"
-			},
-			{
-			  "constant": false,
-			  "inputs": [],
-			  "name": "increaseTemp",
-			  "outputs": [
-				{
-				  "name": "",
-				  "type": "uint8"
-				}
-			  ],
-			  "payable": false,
-			  "stateMutability": "nonpayable",
-			  "type": "function"
-			},
-			{
-			  "constant": false,
-			  "inputs": [],
-			  "name": "decreaseTemp",
-			  "outputs": [
-				{
-				  "name": "",
-				  "type": "uint8"
-				}
-			  ],
-			  "payable": false,
-			  "stateMutability": "nonpayable",
-			  "type": "function"
-			},
-			{
-			  "constant": false,
-			  "inputs": [],
-			  "name": "decreaseTempXX",
-			  "outputs": [
-				{
-				  "name": "",
-				  "type": "uint8"
-				}
-			  ],
-			  "payable": false,
-			  "stateMutability": "nonpayable",
-			  "type": "function"
-			}
-		  ]);
-  
-		console.log(FeverABI);
-	
-		var FeverContract = FeverABI.at('0xca4b024f3f7279534ccb5dc4a528c46afa79eed3');
-        console.log("Fever contract loaded");
-		console.log(FeverContract);
-		
-		console.log("blocknumber");
-		this.FeverContract.getBlockNumber(function(error, result){
-			 if(!error) {
-				 console.log("Blocknumber: " + result)
-				 $('#blocknumber').text(result);
-			}
-			 else
-				 console.error(error);
-		 });
-		
-		console.log("temperature");
-		this.FeverContract.getTemperature(function(error, result){
-			 if(!error) {
-				 console.log("Temperature: " + result)
-				 $('#temperature').text(result);
-			}
-			 else
-				 console.error(error);
-		 });
-		 
-		 
-		console.log("send");
-		console.log("temperature");
-		
-		 
+	</div>
+
+
+	<script>
+		var feverContract;
+
+		$(document).ready(function () {
+			web3 = new Web3(web3.currentProvider);
+			firstAccount = web3.eth.accounts[0];
+			console.log("First account address: " + firstAccount);
+
+			$.getJSON("contracts/FeverContract.json", function (jsonFeverContract) {
+				console.log(jsonFeverContract.abi);
+				var FeverABI = web3.eth.contract(jsonFeverContract.abi);
+
+				feverContract = FeverABI.at('0xca4b024f3f7279534ccb5dc4a528c46afa79eed3');
+
+				feverContract.getBlockNumber(function (error, result) {
+					if (!error) {
+						console.log("Blocknumber: " + result)
+						$('#blocknumber').text(result);
+					}
+					else
+						console.error(error);
+				});
+
+				feverContract.getTemperature(function (error, result) {
+					if (!error) {
+						console.log("Temperature: " + result)
+						$('#temperature').text(result);
+					}
+					else
+						console.error(error);
+				});
+
+			});
+
+		});
+
+
 		function increaseTemp() {
-			this.FeverContract.increaseTemp(function(error, result){
-				 if(!error) {
-					 console.log("Temperature: " + result)
-					 location.reload(); 
+			feverContract.increaseTemp(function (error, result) {
+				if (!error) {
+					console.log("new Temperature (increase): " + result)
+					location.reload();
 				}
-				 else {
-					 console.error(error);
-				 }
-			 });
-		 }
-		 
-		 function decreaseTemp() {
-			this.FeverContract.decreaseTemp(function(error, result){
-				 if(!error) {
-					 console.log("Temperature: " + result)
-					 location.reload(); 
-				 }
-				 else {
-					 console.error(error);
-				 }
-			 });
-		 }
-		 
-		
-    </script>
+				else {
+					console.error(error);
+				}
+			});
+		}
+
+		function decreaseTemp() {
+			feverContract.decreaseTemp(function (error, result) {
+				if (!error) {
+					console.log("new Temperature (decrease): " + result)
+					location.reload();
+				}
+				else {
+					console.error(error);
+				}
+			});
+		}
+
+
+	</script>
 
 </body>
+
 </html>
