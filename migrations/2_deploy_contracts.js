@@ -1,5 +1,5 @@
-var FeverContract = artifacts.require("./FeverContract.sol");
+var exampleContract = artifacts.require("./ExampleContract.sol");
 
-module.exports = function(deployer, helper, accounts) {
-  return deployer.deploy(FeverContract);
+module.exports = function (deployer, helper, accounts) {
+	return deployer.deploy(exampleContract);
 }

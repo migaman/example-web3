@@ -1,6 +1,6 @@
 # example-web3
 
-Example web3 project built on FeverContract [dapp-scratch-fever](https://github.com/okwme/dapp-scratch-fever).
+Example web3 project.
 
 ## Steps (Windows)
 
