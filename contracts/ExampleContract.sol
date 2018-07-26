@@ -4,12 +4,7 @@ contract ExampleContract {
 
   uint counter;
 
-  //unsigned integer of 256 bits
-  uint idvideo;
-
-  // hash tables  (every possible key exists and is mapped to a value whose byte-representation is all zeros.)
-  mapping (address => uint) public videolist;
-
+  
   constructor() public {
     counter = 1;
   }
@@ -18,13 +13,6 @@ contract ExampleContract {
     return counter;
   }
 
-  function getIdVideo () public view  returns(uint) {
-    return idvideo;
-  }
-
-  function setIdVideo(uint id) public {
-        idvideo = id;
-  }
 
   function getBlockCoinbase () public view  returns(address) {
     return block.coinbase;
