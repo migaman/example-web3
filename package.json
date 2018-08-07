@@ -1,5 +1,5 @@
 {
-  "name": "myteam",
+  "name": "example-web3",
   "version": "0.0.1",
   "private": true,
   "description": "Example App",
@@ -10,10 +10,10 @@
   "scripts": {
     "start": "node app.js"
   },
-  "author": "Michael",
+  "author": "migaman",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "web3": "^1.0.0-beta.34"
+    "web3": "^1.0.0-beta.35"
   }
 }
