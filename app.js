@@ -11,4 +11,4 @@ app.use(express.static('./static'));
 app.use('/contracts', express.static('./build/contracts'));
 
 
-app.listen(9001);
+app.listen(3000);
